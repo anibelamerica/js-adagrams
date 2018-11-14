@@ -1,7 +1,7 @@
 import Adagrams from 'adagrams';
 
 describe('Adagrams', () => {
-  describe('drawLetters', () => {
+  describe.skip('drawLetters', () => {
     it('draws ten letters from the letter pool', () => {
       const drawn = Adagrams.drawLetters();
 

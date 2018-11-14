@@ -43,9 +43,25 @@ const Adagrams = {
       deck[i] = temp;
     }
 
-    // console.log(deck);
     return deck.slice(0, 10);
+  },
+
+  usesAvailableLetters(input, lettersInHand) {
+    let inputCopy = input.toUpperCase().split('').slice();
+    let handCopy = lettersInHand.slice();
+
+    inputCopy.forEach(function (letter) {
+      if (handCopy.includes(letter.toUpperCase())) {
+        handCopy.pop(letter);
+        inputCopy.pop(letter);
+      } else {
+        return false;
+      }
+    });
+    return true;
   }
+
+
 };
 
 // Do not remove this line or your tests will break!
