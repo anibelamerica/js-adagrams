@@ -103,8 +103,27 @@ const Adagrams = {
     }
 
     return score;
-  }
+  },
 
+  highestScoreFrom(words) {
+
+    let max = 0;
+    let winner = null;
+    for (const word of words) {
+      const temp = this.scoreWord(word);
+      if (temp > max) {
+        max = temp;
+        winner = word;
+      }
+    }
+
+    return {
+      word: winner,
+      score: max
+    }
+
+
+  }
 
 };
 
