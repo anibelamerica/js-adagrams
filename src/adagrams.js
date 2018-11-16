@@ -92,7 +92,7 @@ const Adagrams = {
 
     let score = 0;
 
-    const wordArray = word.toLowerCase().split('');
+    const wordArray = word.toUpperCase().split('');
 
     wordArray.forEach((letter) => {
       score += scoreChart[letter];
