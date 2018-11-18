@@ -30,7 +30,7 @@ const Adagrams = {
 
     let deck = [];
 
-    Object.keys(letters).forEach(function (letter) {
+    Object.keys(letters).forEach( (letter) => {
       for (let i = 0; i < letters[letter]; i += 1) {
         deck.push(letter);
       }
@@ -108,8 +108,11 @@ const Adagrams = {
   highestScoreFrom(words) {
 
     let topWord;
+    let all_tiles_winner;
+    let shortest_winner;
     let max = 0;
     let winner = [];
+
     for (const word of words) {
       const temp = this.scoreWord(word);
       if (temp > max) {
@@ -120,9 +123,6 @@ const Adagrams = {
       }
     }
 
-    let all_tiles_winner;
-    let shortest_winner = [];
-
     if (winner.length > 1) {
 
       all_tiles_winner = winner.find( (word) => {
@@ -130,14 +130,12 @@ const Adagrams = {
       });
 
       for (const word of winner) {
-        if (!shortest_winner.length || word.length < shortest_winner[0].length) {
-          shortest_winner = [word];
-        } else if (word.length == shortest_winner[0].length) {
-          shortest_winner.push(word);
+        if (shortest_winner === undefined || word.length < shortest_winner.length) {
+          shortest_winner = word;
         }
       }
 
-      topWord = all_tiles_winner === undefined ? shortest_winner[0] : all_tiles_winner;
+      topWord = all_tiles_winner === undefined ? shortest_winner : all_tiles_winner;
     } else {
       topWord = winner[0];
     }
