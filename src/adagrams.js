@@ -28,7 +28,7 @@ const Adagrams = {
       Z: 1
     };
 
-    let deck = [];
+    const deck = [];
 
     Object.keys(letters).forEach( (letter) => {
       for (let i = 0; i < letters[letter]; i += 1) {
@@ -47,8 +47,8 @@ const Adagrams = {
   },
 
   usesAvailableLetters(input, lettersInHand) {
-    let inputCopy = input.toUpperCase().split('').slice();
-    let handCopy = lettersInHand.slice();
+    const inputCopy = input.toUpperCase().split('').slice();
+    const handCopy = lettersInHand.slice();
     for (const letter of inputCopy) {
       if (handCopy.includes(letter)) {
         handCopy.splice( handCopy.indexOf(letter), 1);
@@ -126,7 +126,7 @@ const Adagrams = {
     if (winner.length > 1) {
 
       all_tiles_winner = winner.find( (word) => {
-        return word.length == 10;
+        return word.length === 10;
       });
 
       for (const word of winner) {
