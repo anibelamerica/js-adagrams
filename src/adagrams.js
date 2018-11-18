@@ -107,22 +107,45 @@ const Adagrams = {
 
   highestScoreFrom(words) {
 
+    let topWord;
     let max = 0;
-    let winner = null;
+    let winner = [];
     for (const word of words) {
       const temp = this.scoreWord(word);
       if (temp > max) {
         max = temp;
-        winner = word;
+        winner = [word];
+      } else if (temp == max) {
+        winner.push(word);
       }
     }
 
-    return {
-      word: winner,
-      score: max
+    let all_tiles_winner;
+    let shortest_winner = [];
+
+    if (winner.length > 1) {
+
+      all_tiles_winner = winner.find( (word) => {
+        return word.length == 10;
+      });
+
+      for (const word of winner) {
+        if (!shortest_winner.length || word.length < shortest_winner[0].length) {
+          shortest_winner = [word];
+        } else if (word.length == shortest_winner[0].length) {
+          shortest_winner.push(word);
+        }
+      }
+
+      topWord = all_tiles_winner === undefined ? shortest_winner[0] : all_tiles_winner;
+    } else {
+      topWord = winner[0];
     }
 
-
+    return {
+      word: topWord,
+      score: max
+    }
   }
 
 };
